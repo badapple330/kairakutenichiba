@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<!-- 国際化 (propertiesファイルを増やすたびに以下に追加する事)-->
+	<constant name="struts.custom.i18n.resources"
+		value="
+		com.internousdev.kairakutenichiba.property.cart
+		com.internousdev.kairakutenichiba.property.check
+		com.internousdev.kairakutenichiba.property.detail
+		com.internousdev.kairakutenichiba.property.finish
+		com.internousdev.kairakutenichiba.property.help
+		com.internousdev.kairakutenichiba.property.helplink
+		com.internousdev.kairakutenichiba.property.history
+		com.internousdev.kairakutenichiba.property.index
+		com.internousdev.kairakutenichiba.property.login
+		com.internousdev.kairakutenichiba.property.logout
+		com.internousdev.kairakutenichiba.property.mypage
+		com.internousdev.kairakutenichiba.property.payment
+		com.internousdev.kairakutenichiba.property.cartempty
+		com.internousdev.kairakutenichiba.property.peymenterror
+		com.internousdev.kairakutenichiba.property.stockserror
+		com.internousdev.kairakutenichiba.property.account
+		com.internousdev.kairakutenichiba.property.adminhelp
+		com.internousdev.kairakutenichiba.property.adminhelpdetail
+		com.internousdev.kairakutenichiba.property.header
+		com.internousdev.kairakutenichiba.property.admincustomer
+		com.internousdev.kairakutenichiba.property.adminhistory
+		com.internousdev.kairakutenichiba.property.adminitem
+		com.internousdev.kairakutenichiba.property.admintop
+		com.internousdev.kairakutenichiba.property.adminheader
+		com.internousdev.kairakutenichiba.property.error
+		com.internousdev.kairakutenichiba.property.paymenterror
+		" />
+
+
+	<package name="com.internousdev.kairakutenichiba.action" extends="struts-default">
+
+		<!-- ログインアクション、SUCCESSならindex.jsp、ERRORならlogin.jsp、loginならadmintop.jspに遷移する -->
+		<action name="LoginAction" class="com.internousdev.kairakutenichiba.action.LoginAction"
+			method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="login">admintop.jsp</result>
+		</action>
+		
+
+		<!-- ログアウトアクション、SUCCESSならlogout.jsp、ERRORならlogin.jspに遷移する -->
+		<action name="LogoutAction" class="com.internousdev.kairakutenichiba.action.LogoutAction"
+			method="execute">
+			<result name="success">logout.jsp</result>
+			<result name="error">logout.jsp</result>
+		</action>
+
+		<!-- 商品詳細画面への遷移 -->
+		<action name="GoItemDetailAction"
+			class="com.internousdev.kairakutenichiba.action.GoItemDetailAction" method="execute">
+			<result name="success">detail.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="login">detail.jsp</result>
+		</action>
+
+		<!-- カートに商品を追加する -->
+		<action name="AddToCartAction" class="com.internousdev.kairakutenichiba.action.AddToCartAction"
+			method="execute">
+			<result name="success">cart.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="login">cart.jsp</result>
+			<result name="other">stockserror.jsp</result>
+
+
+		</action>
+
+		<!-- カートに商品の数を増減する -->
+		<action name="CartUpdateAction" class="com.internousdev.kairakutenichiba.action.CartUpdateAction"
+			method="execute">
+			<result name="success">cart.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="login">cart.jsp</result>
+			<result name="other">stockserror.jsp</result>
+		</action>
+
+		<!-- カート商品削除 -->
+		<action name="CartItemDeleteAction" class="com.internousdev.kairakutenichiba.action.CartItemDeleteAction"
+			method="execute">
+			<result name="success">cart.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="other">error.jsp</result>
+			<result name="login">cart.jsp</result>
+		</action>
+
+		<!-- カート画面への遷移 -->
+		<action name="GoCartAction" class="com.internousdev.kairakutenichiba.action.GoCartAction"
+			method="execute">
+			<result name="success">cart.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="login">cart.jsp</result>
+		</action>
+
+		<!-- 支払い画面への遷移 -->
+		<action name="GoSettlementAction"
+			class="com.internousdev.kairakutenichiba.action.GoSettlementAction" method="execute">
+			<result name="success">payment.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="login">payment.jsp</result>
+			<result name="other">cartempty.jsp</result>
+		</action>
+
+		<!-- 支払い画面。成功なら購入確認、エラーならクレジット情報の間違いのページに飛ぶ -->
+		<action name="PaymentAction" class="com.internousdev.kairakutenichiba.action.PaymentAction"
+			method="execute">
+			<result name="success">check.jsp</result>
+			<result name="error">payment.jsp</result>
+			<result name="login">check.jsp</result>
+			<result name="other">paymenterror.jsp</result>
+		</action>
+
+		<!-- 購入確認画面。成功なら完了画面、在庫切れだったら在庫切れ画面に飛ぶ -->
+		<action name="PurchaseCompleteAction"
+			class="com.internousdev.kairakutenichiba.action.PurchaseCompleteAction"
+			method="execute">
+			<result name="success">finish.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="login">finish.jsp</result>
+			<result name="other">stockserror.jsp</result>
+		</action>
+
+		<!-- 問い合わせ画面。問い合わせ完了画面に飛ぶ。必須が埋まってなかったらERRORで別ページ？ -->
+		<action name="HelpAction" class="com.internousdev.kairakutenichiba.action.HelpAction"
+			method="execute">
+			<result name="success">helplink.jsp</result>
+			<result name="error" >helplink.jsp</result>
+			<result name="login">helplink.jsp</result>
+		</action>
+
+		<!-- 購入履歴 -->
+		<action name="HistoryAction" class="com.internousdev.kairakutenichiba.action.HistoryAction"
+			method="execute">
+			<result name="success">history.jsp</result>
+			<result name="error" >login.jsp</result>
+			<result name="login">history.jsp</result>
+		</action>
+
+
+		<!-- 管理者問い合わせ画面 -->
+		<action name="AdminHelpAction"
+			class="com.internousdev.kairakutenichiba.action.AdminHelpAction" method="execute">
+			<result name="success">adminhelp.jsp</result>
+			<result name="error">adminhelp.jsp</result>
+			<result name="login">adminhelp.jsp</result>
+		</action>
+
+		<!-- 管理者商品管理画面 　 -->
+		<action name="AdminItemAction" class="com.internousdev.kairakutenichiba.action.AdminItemAction"
+			method="execute">
+			<result name="success">adminitem.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="login">adminitem.jsp</result>
+		</action>
+
+		<!-- 管理者商品管理画面 -->
+		<action name="AdminItemInsertAction" class="com.internousdev.kairakutenichiba.action.AdminItemInsertAction"
+			method="execute">
+			<result name="success">admintop.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="login">adminitem.jsp</result>
+		</action>
+
+		<!-- 管理者商品管理画面 -->
+		<action name="AdminItemDeleteAction" class="com.internousdev.kairakutenichiba.action.AdminItemDeleteAction"
+			method="execute">
+			<result name="success">adminitem.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="login">adminitem.jsp</result>
+		</action>
+
+		<!-- 管理者商品管理画面 -->
+		<action name="AdminItemUpdateAction" class="com.internousdev.kairakutenichiba.action.AdminItemUpdateAction"
+			method="execute">
+			<result name="success">admintop.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="login">adminitem.jsp</result>
+		</action>
+
+
+
+		<!-- 管理者顧客情報 -->
+		<action name="AdminUserAction" class="com.internousdev.kairakutenichiba.action.AdminUserAction"
+			method="execute">
+			<result name="success">admincustomer.jsp</result>
+			<result name="error">admincustomer.jsp</result>
+			<result name="login">admincustomer.jsp</result>
+		</action>
+
+		<!-- 管理者顧客購入情報 -->
+		<action name="AdminHistoryAction"
+			class="com.internousdev.kairakutenichiba.action.AdminHistoryAction" method="execute">
+			<result name="success">adminhistory.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="login">adminhistory.jsp</result>
+			<result name="other">adminhistory.jsp</result>
+		</action>
+
+		<!-- 管理者商品一覧 -->
+		<action name="AdminItemAction" class="com.internousdev.kairakutenichiba.action.AdminItemAction"
+			method="execute">
+			<result name="success">adminitem.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<!-- Mypageの情報を表示させるアクション -->
+		<action name="MyPageAction" class="com.internousdev.kairakutenichiba.action.MyPageAction"
+			method="execute">
+			<result name="success">account.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="other">error.jsp</result>
+		</action>
+
+
+		<!-- トップページへ遷移するアクション -->
+		<action name="IndexAction" class="com.internousdev.kairakutenichiba.action.IndexAction"
+			method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">index.jsp</result>
+			<result name="login">index.jsp</result>
+		</action>
+
+
+	</package>
+</struts>

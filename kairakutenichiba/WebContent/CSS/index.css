@@ -1,0 +1,111 @@
+body{
+	background-color: #EEE9ED;
+	padding-bottom:300px;
+}
+
+div#pagebody {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 80px;
+	background-color: #EEE9ED;
+}
+
+.sidebar {
+	position:fixed;
+	display: inline-block;
+	width: 20%;
+	float: left;
+	height: 100%;
+	margin-top: 70px;
+}
+
+.sidebar-box {
+	position: relative;
+	width: 100%;
+	margin: 10px auto;
+	border-bottom: 1px dotted #000000;
+	padding-bottom: 5px;
+}
+
+.sidebar-box a {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.sidebar-box img {
+	position: absolute;
+	display: inline-block;
+	left: 5%;
+}
+
+.sbox {
+	display: inline-block;
+	color: #ff8080;
+	padding-left: 30%;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+em {
+	height: 45px;
+	padding-top:20px;
+}
+
+.recommend {
+	position:relative;
+	width: 700px;
+	margin-bottom: 10px;
+	padding-left: 25px;
+	border-bottom: dotted 1px #000000;
+	font-size: 30px;
+	font-weight: 900;
+	color: #ff8000;
+}
+
+.img {
+	position: relative;
+	margin-left: 30px;
+	width:20%;
+	height:20%;
+}
+
+.bxslider{
+
+}
+
+.slidebox {
+	position: relative;
+	margin-left: 25%;
+	padding-top: 70px;
+
+}
+
+#boy,#girl,#novel,#paperback,#magazine{
+	position:relative;
+	width: 700px;
+	margin-bottom: 10px;
+	padding-left: 25px;
+	border-bottom: dotted 1px #000000;
+	font-size: 30px;
+	font-weight: 900;
+	color: #ff8000;
+	margin-left: 25%;
+
+}
+
+.boy-item,.girl-item,.novel-item,.paperback-item,.magazine-item{
+	position:relative;
+
+	margin-left: 25%;
+
+}
+
+#jump-boy,#jump-girl,#jump-novel,#jump-paperback,#jump-magazine{
+	padding-top: 100px;
+}
+
+.go-top{
+	color: #ff8080;
+	font-size: small;
+}

@@ -1,0 +1,72 @@
+h1 {
+	background-color: pink;
+	margin-top: 100px;
+}
+
+table.type01 {
+	width: 100%;
+	border-collapse: collapse;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	text-align: right;
+}
+
+table.type01 th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background: #ececec;
+}
+
+table.type01 td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+table.type02 {
+	width: 100%;
+	color: red;
+	border-collapse: separate;
+	border-spacing: 0;
+	text-align: right;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	background-size: contain;
+}
+
+table.type02 th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	background: #eee;
+}
+
+table.type02 td {
+	color: red;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+div.button8{
+	margin-left:83%;
+	font-size:xx-large;
+}
+
+p.right{
+	text-align:right;
+}
